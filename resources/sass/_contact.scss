@@ -1,0 +1,48 @@
+body {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.who-we-box {
+    padding: 70px 60px;
+    border-bottom: 10px solid #fbba42;
+    width: 520px;
+    margin-top: 83px;
+
+    p {
+        font-size: 16px;
+        margin-bottom: 30px;
+        text-align: justify;
+    }
+}
+
+.section-title {
+    h5 {
+        font-weight: 500;
+        font-size: 17px;
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 33px;
+        font-weight: 700;
+        margin: 0 0 20px;
+        text-transform: uppercase;
+        line-height: 1;
+    }
+}
+
+.white-bg {
+    background: white;
+}
+
+.btn.brand-btn {
+    background: #fbba42;
+    color: #222;
+    padding: 10px 30px;
+    border-radius: 0;
+}
+
+.btn.brand-btn:hover {
+    background: #fbba42c9;
+}

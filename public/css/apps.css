@@ -1,0 +1,136 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);/* font */
+
+:root {
+  font: 20px/1.2 "Nunito", sans-serif;
+}
+
+/* or html */
+
+body,
+body * {
+  margin: unset;
+  box-sizing: unset;
+  padding: unset;
+  font-size: unset;
+  color: unset;
+  text-decoration: unset;
+}
+
+figure * {
+  display: block;
+}
+
+article {
+  padding: 0.5in 0;
+  display: grid;
+  grid-template-columns: 1fr 0.5in [start] 1.25in 5in 1.25in [end] 0.5in 1fr;
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fffdeb), color-stop(6.55rem, white));
+  background: linear-gradient(#fffdeb, white 6.55rem);
+}
+
+article * {
+  grid-column: start/end;
+}
+
+@media (max-width: 8.5in) {
+  article {
+    grid-template-columns: 1fr 5% [start] 15% 60% 15% [end] 5% 1fr;
+  }
+}
+
+.share {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.share img {
+  padding: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.size-1 {
+  grid-column: 4/5;
+}
+
+.size-2 {
+  grid-column: 3/6;
+}
+
+.size-3 {
+  grid-column: 2/7;
+}
+
+.size-4 {
+  grid-column: 1/8;
+}
+
+.size-1 img,
+.size-2 img,
+.size-3 img,
+.size-4 img {
+  width: 100%;
+}
+
+figcaption {
+  margin-top: 0.5rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+h2,
+p {
+  margin-bottom: 2.4em;
+}
+
+h1 {
+  font: 700 2rem/1.2 "Nunito", sans-serif;
+  color: #545454;
+}
+
+h2 {
+  font: 400 1.5rem/1.2 "Nunito", sans-serif;
+  color: #d4d4d4;
+}
+
+time {
+  font: 700 1rem/1.2 "Nunito", sans-serif;
+  color: #b7a8ff;
+}
+
+h3 {
+  font: 700 1rem/1.2 "Nunito", sans-serif;
+  color: #7357ff;
+}
+
+p {
+  font: 400 1rem/1.5 "Nunito", sans-serif;
+  color: #545454;
+}
+
+figcaption p {
+  font: 400 1rem/1.5 "Nunito", sans-serif;
+  color: #d4d4d4;
+}
+
+a {
+  box-shadow: inset 0 -0.25em #fff480;
+}
+
+@media (max-width: 8.5in) {
+  :root {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 5in) {
+  :root {
+    font-size: 16px;
+  }
+}
+

@@ -1,0 +1,44 @@
+.ql-editor {
+    min-height: 160px;
+}
+
+.card .nav-pills.custom-pills {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.card .nav-pills.custom-pills .nav-link.active {
+    color: var(--primary) !important;
+    opacity: 1;
+    background-color: transparent;
+    border-bottom: 2px solid var(--primary);
+}
+
+.card .nav-pills.custom-pills .nav-link {
+    border-radius: 0;
+    opacity: .7;
+    font-size: 14px;
+    padding: 12px 15px;
+}
+
+.profiletimeline {
+    position: relative;
+    padding-left: 40px;
+    margin: 40px 10px 0 30px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.profiletimeline .sl-item {
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.profiletimeline .sl-item .sl-left {
+    float: left;
+    margin-left: -60px;
+    z-index: 1;
+    margin-right: 15px;
+}
+
+.profiletimeline .sl-item .sl-left img {
+    max-width: 40px;
+}
