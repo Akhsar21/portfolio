@@ -8,9 +8,13 @@ class StoreCategoryAction
 {
     public function __construct()
     {
-        // 
+        //
     }
 
+    /**
+     * @param $requestData
+     * @return mixed
+     */
     public function run($requestData)
     {
         return Category::create($requestData);

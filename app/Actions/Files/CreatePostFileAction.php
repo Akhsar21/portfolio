@@ -6,11 +6,11 @@ use Illuminate\Support\Str;
 
 class CreatePostFileAction
 {
-    protected $interventionSaveImageAction;
+    private $interventionSaveImageAction;
 
     public function __construct(InterventionSaveImageAction $interventionSaveImageAction)
     {
-        return $this->interventionSaveImageAction = $interventionSaveImageAction;
+        $this->interventionSaveImageAction = $interventionSaveImageAction;
     }
 
     public function run($file, $width = 1280)

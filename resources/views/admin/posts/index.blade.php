@@ -16,18 +16,18 @@
                 <table class="table table-responsive-sm table-hover mb-0">
                     <thead class="">
                         <tr>
-                            <th scope="row">#</th>
-                            <th>Thumbnail</th>
-                            <th>Title</th>
-                            <th>Slug</th>
-                            <th>Category</th>
-                            <th>Actions</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Thumbnail</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Slug</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($posts as $item)
                         <tr>
-                            <th>{{ $loop->iteration }}</th>
+                            <th scope="row">{{ $loop->iteration }}</th>
                             <td>
                                 @if (!empty($item->thumbnail))
                                 <img class="img-thumbnail" width="50" src="{{ asset($item->thumbnail) }}"
@@ -59,7 +59,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td>
+                            <td colspan="6" class="text-center">
                                 <h4>Nothing Posts</h4>
                             </td>
                         </tr>

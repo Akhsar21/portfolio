@@ -4,7 +4,7 @@ namespace App\Actions\Files;
 
 class CreateThumbnailAction
 {
-    protected $interventionSaveImageAction;
+    private $interventionSaveImageAction;
 
     public function __construct(InterventionSaveImageAction $interventionSaveImageAction)
     {

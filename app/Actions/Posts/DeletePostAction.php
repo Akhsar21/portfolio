@@ -7,7 +7,7 @@ use App\Models\Post;
 
 class DeletePostAction
 {
-    protected $deleteThumbnailAction;
+    private $deleteThumbnailAction;
 
     public function __construct(DeleteThumbnailAction $deleteThumbnailAction)
     {

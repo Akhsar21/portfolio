@@ -25,7 +25,11 @@ Route::post('/contact', 'ContactController@store')->name('contact.store');
 
 Route::get('/portfolio', 'PublicProjectController@index')->name('portfolio');
 
-Route::middleware(['auth'])->prefix('/admin')->group(function () {
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage.users')->group(function () {
+    Route::resource('/users', 'UsersController', ['except' => ['show', 'create', 'store']]);
+});
+
+Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/', 'HomeController@dashboard')->name('dashboard');
     Route::resources([
         'categories' => 'CategoriesController',

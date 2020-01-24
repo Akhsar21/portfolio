@@ -4,7 +4,7 @@ namespace App\Actions\Files;
 
 class CreateAvatarAction
 {
-    protected $interventionSaveAvatarAction;
+    private $interventionSaveAvatarAction;
 
     public function __construct(InterventionSaveAvatarAction $interventionSaveAvatarAction)
     {

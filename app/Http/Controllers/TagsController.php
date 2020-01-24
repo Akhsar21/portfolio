@@ -8,14 +8,21 @@ use App\Actions\Tags\StoreTagAction;
 use App\Actions\Tags\UpdateTagAction;
 use App\Http\Requests\TagRequest;
 use App\Models\Tag;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class TagsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param GetPaginatedTagsAction $getPaginatedTagsAction
+     * @return Factory|View
      */
     public function index(Request $request, GetPaginatedTagsAction $getPaginatedTagsAction)
     {
@@ -27,7 +34,7 @@ class TagsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|View
      */
     public function create()
     {
@@ -38,8 +45,9 @@ class TagsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\TagRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param TagRequest $request
+     * @param StoreTagAction $storeTagAction
+     * @return RedirectResponse|Redirector
      */
     public function store(TagRequest $request, StoreTagAction $storeTagAction)
     {
@@ -51,8 +59,8 @@ class TagsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
+     * @param Tag $tag
+     * @return Factory|View
      */
     public function show(Tag $tag)
     {
@@ -62,8 +70,8 @@ class TagsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
+     * @param Tag $tag
+     * @return Factory|View
      */
     public function edit(Tag $tag)
     {
@@ -73,9 +81,10 @@ class TagsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\TagRequest  $request
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
+     * @param TagRequest $request
+     * @param Tag $tag
+     * @param UpdateTagAction $updateTagAction
+     * @return RedirectResponse|Redirector
      */
     public function update(TagRequest $request, Tag $tag, UpdateTagAction $updateTagAction)
     {
@@ -87,13 +96,14 @@ class TagsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
+     * @param Tag $tag
+     * @param DeleteTagAction $deleteTagAction
+     * @return RedirectResponse|Redirector
      */
     public function destroy(Tag $tag, DeleteTagAction $deleteTagAction)
     {
         $deleteTagAction->run($tag);
 
-        return radirect(route('tags.index'))->with('flash_message', 'Tag deleted!');
+        return redirect(route('tags.index'))->with('flash_message', 'Tag deleted!');
     }
 }

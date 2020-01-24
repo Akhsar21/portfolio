@@ -13,8 +13,7 @@ class Profile extends Model
 
     public function profileImage()
     {
-        $imagePath = ($this->avatar) ? $this->avatar : '';
-        return $imagePath;
+        return ($this->avatar) ? $this->avatar : '';
     }
 
     public function user()

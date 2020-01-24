@@ -8,14 +8,20 @@ use App\Actions\Categories\StoreCategoryAction;
 use App\Actions\Categories\UpdateCategoryAction;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param GetPaginatedCategoriesAction $getPaginatedCategoriesAction
+     * @return Factory|View
      */
     public function index(Request $request, GetPaginatedCategoriesAction $getPaginatedCategoriesAction)
     {
@@ -27,7 +33,7 @@ class CategoriesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|View
      */
     public function create()
     {
@@ -38,8 +44,9 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\CategoryRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param CategoryRequest $request
+     * @param StoreCategoryAction $storeCategoryAction
+     * @return RedirectResponse|Redirector
      */
     public function store(CategoryRequest $request, StoreCategoryAction $storeCategoryAction)
     {
@@ -50,8 +57,8 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @return Factory|View
      */
     public function show(Category $category)
     {
@@ -61,8 +68,8 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @return Factory|View
      */
     public function edit(Category $category)
     {
@@ -72,9 +79,9 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\CategoryRequest  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param CategoryRequest $request
+     * @param Category $category
+     * @return RedirectResponse|Redirector
      */
     public function update(CategoryRequest $request, Category $category, UpdateCategoryAction $updateCategoryAction)
     {
@@ -86,8 +93,9 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @param DeleteCategoryAction $deleteCategoryAction
+     * @return RedirectResponse|Redirector
      */
     public function destroy(Category $category, DeleteCategoryAction $deleteCategoryAction)
     {

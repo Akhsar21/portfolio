@@ -8,14 +8,21 @@ use App\Actions\Posts\StorePostAction;
 use App\Actions\Posts\UpdatePostAction;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param GetAllPostsAction $getAllPostsAction
+     * @return Factory|View
      */
     public function index(Request $request, GetAllPostsAction $getAllPostsAction)
     {
@@ -26,7 +33,7 @@ class PostsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|View
      */
     public function create()
     {
@@ -38,8 +45,9 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\PostRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param PostRequest $request
+     * @param StorePostAction $storePostAction
+     * @return RedirectResponse|Redirector
      */
     public function store(PostRequest $request, StorePostAction $storePostAction)
     {
@@ -50,8 +58,8 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @return Factory|View
      */
     public function show(Post $post)
     {
@@ -61,8 +69,8 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @return Factory|View
      */
     public function edit(Post $post)
     {
@@ -72,9 +80,10 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\PostRequest  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @param PostRequest $request
+     * @param Post $post
+     * @param UpdatePostAction $updatePostAction
+     * @return RedirectResponse|Redirector
      */
     public function update(PostRequest $request, Post $post, UpdatePostAction $updatePostAction)
     {
@@ -85,8 +94,9 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @param DeletePostAction $deletePostAction
+     * @return RedirectResponse
      */
     public function destroy(Post $post, DeletePostAction $deletePostAction)
     {

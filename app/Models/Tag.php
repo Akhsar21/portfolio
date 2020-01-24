@@ -23,9 +23,7 @@ class Tag extends Model
 
     public function setSlugAttribute($slug)
     {
-        if (empty($slug)) {
-            $slug = $this->attributes['name'];
-        }
+        if (empty($slug)) $slug = $this->attributes['name'];
 
         $this->attributes['slug'] = Str::slug($slug, '-');
     }

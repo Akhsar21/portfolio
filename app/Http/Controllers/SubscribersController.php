@@ -7,15 +7,20 @@ use App\Actions\Subscribers\StoreSubscriberAction;
 use App\Actions\Subscribers\UnsubscribeAction;
 use App\Actions\Subscribers\UpdateSubscriberAction;
 use App\Http\Requests\SubscriberRequest;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class SubscribersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param GetAllSubscriberAction $getAllSubscriberAction
+     * @return Factory|View
      */
     public function index(Request $request, GetAllSubscriberAction $getAllSubscriberAction)
     {
@@ -27,8 +32,9 @@ class SubscribersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\SubscriberRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param SubscriberRequest $request
+     * @param StoreSubscriberAction $storeSubscriberAction
+     * @return RedirectResponse
      */
     public function store(SubscriberRequest $request, StoreSubscriberAction $storeSubscriberAction)
     {
@@ -39,8 +45,9 @@ class SubscribersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param UpdateSubscriberAction $updateSubscriberAction
+     * @return RedirectResponse
      */
     public function update(Request $request, UpdateSubscriberAction $updateSubscriberAction)
     {
@@ -54,8 +61,9 @@ class SubscribersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param UnsubscribeAction $unsubscribeAction
+     * @return RedirectResponse
      */
     public function destroy(Request $request, UnsubscribeAction $unsubscribeAction)
     {

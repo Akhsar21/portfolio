@@ -8,14 +8,20 @@ use App\Actions\Projects\StoreProjectAction;
 use App\Actions\Projects\UpdateProjectAction;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class ProjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param GetPaginatedProjectsAction $getPaginatedProjectsAction
+     * @return Factory|View
      */
     public function index(Request $request, GetPaginatedProjectsAction $getPaginatedProjectsAction)
     {
@@ -27,7 +33,7 @@ class ProjectsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|View
      */
     public function create()
     {
@@ -39,8 +45,9 @@ class ProjectsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\ProjectRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param ProjectRequest $request
+     * @param StoreProjectAction $storeProjectAction
+     * @return RedirectResponse|Redirector
      */
     public function store(ProjectRequest $request, StoreProjectAction $storeProjectAction)
     {
@@ -51,8 +58,8 @@ class ProjectsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * @param Project $project
+     * @return Factory|View
      */
     public function show(Project $project)
     {
@@ -62,8 +69,8 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * @param Project $project
+     * @return Factory|View
      */
     public function edit(Project $project)
     {
@@ -73,9 +80,10 @@ class ProjectsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\ProjectRequest  $request
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * @param ProjectRequest $request
+     * @param $id
+     * @param UpdateProjectAction $updateProjectAction
+     * @return RedirectResponse|Redirector
      */
     public function update(ProjectRequest $request, $id, UpdateProjectAction $updateProjectAction)
     {
@@ -86,8 +94,9 @@ class ProjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * @param Project $project
+     * @param DeleteProjectAction $deleteProjectAction
+     * @return RedirectResponse
      */
     public function destroy(Project $project, DeleteProjectAction $deleteProjectAction)
     {

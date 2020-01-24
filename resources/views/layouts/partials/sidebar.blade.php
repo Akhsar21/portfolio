@@ -27,28 +27,28 @@
                 <i class="c-sidebar-nav-icon cil-bookmark"></i> {{ __('Tags') }}
             </a>
         </li>
-        {{-- @can('manage.users') --}}
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('projects.index') }}">
                 <i class="c-sidebar-nav-icon cil-code"></i> {{ __('Projects') }}
             </a>
         </li>
-        {{-- @endcan --}}
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('subscribers.index') }}">
                 <i class="c-sidebar-nav-icon cil-contact"></i> {{ __('Subscribers') }}
             </a>
         </li>
+        @can('manage.users')
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('profiles.index') }}">
+            <a class="c-sidebar-nav-link" href="{{ route('admin.users.index') }}">
                 <i class="c-sidebar-nav-icon cil-contact"></i> {{ __('Users') }}
             </a>
         </li>
+        @endcan
         <li class="c-sidebar-nav-title">{{ __('Components') }}</li>
         {{-- <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href=" route('recycle') ">
                 <i class="c-sidebar-nav-icon cil-trash"></i> {{ __('Recycle bin') }}
-            </a>
+        </a>
         </li> --}}
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{ route('telescope') }}" target="_blank">

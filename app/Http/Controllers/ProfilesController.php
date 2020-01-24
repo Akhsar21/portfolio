@@ -7,13 +7,19 @@ use App\Actions\Profiles\UpdateProfileAction;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
 use App\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class ProfilesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return Factory|View
      */
     public function index(User $user)
     {
@@ -24,7 +30,8 @@ class ProfilesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return Factory|View
      */
     public function create(User $user)
     {
@@ -34,8 +41,9 @@ class ProfilesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\ProfileRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param ProfileRequest $request
+     * @param StoreProfileAction $storeProfileAction
+     * @return RedirectResponse|Redirector
      */
     public function store(ProfileRequest $request, StoreProfileAction $storeProfileAction)
     {
@@ -47,8 +55,9 @@ class ProfilesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Profile  $profile
-     * @return \Illuminate\Http\Response
+     * @param Profile $profile
+     * @param User $user
+     * @return Factory|View
      */
     public function show(Profile $profile, User $user)
     {
@@ -58,8 +67,8 @@ class ProfilesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return Factory|View
      */
     public function edit(User $user)
     {
@@ -69,9 +78,10 @@ class ProfilesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\ProfileRequest  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param ProfileRequest $request
+     * @param User $user
+     * @param UpdateProfileAction $updateProfileAction
+     * @return RedirectResponse|Redirector
      */
     public function update(ProfileRequest $request, User $user, UpdateProfileAction $updateProfileAction)
     {
@@ -85,8 +95,8 @@ class ProfilesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Profile  $profile
-     * @return \Illuminate\Http\Response
+     * @param Profile $profile
+     * @return void
      */
     public function destroy(Profile $profile)
     {

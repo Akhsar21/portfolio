@@ -52,9 +52,7 @@ class Post extends Model
 
     public function setSlugAttribute($slug)
     {
-        if (empty($slug)) {
-            $slug = $this->attributes['title'] . ' ' . Str::random(10);
-        }
+        if (empty($slug)) $slug = $this->attributes['title'] . ' ' . Str::random(10);
 
         $this->attributes['slug'] = Str::slug($slug, '-');
     }
